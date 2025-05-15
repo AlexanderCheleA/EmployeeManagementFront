@@ -7,4 +7,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'employeeManagement';
+
+showEmployeeForm = false;
+  showEmployeeOptions = false;
+
+  showForm() {
+    if (this.showEmployeeForm) {
+      this.showEmployeeForm = false;
+    } else {
+      this.showEmployeeForm = true;
+      this.showEmployeeOptions = false;
+    }
+  }
+
+  showOptions() {
+    if (this.showEmployeeOptions) {
+      this.showEmployeeOptions = false;
+    } else {
+      this.showEmployeeOptions = true;
+      this.showEmployeeForm = false;
+    }
+  }
 }

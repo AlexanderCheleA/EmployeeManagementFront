@@ -1,0 +1,67 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="employee-form">
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name" required />
+      <mat-error *ngIf="employeeForm.get('name')?.hasError('required')">El nombre es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="lastName" required />
+      <mat-error *ngIf="employeeForm.get('lastName')?.hasError('required')">El apellido es obligatorio.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Edad</mat-label>
+      <input matInput formControlName="age" type="number" required />
+      <mat-error *ngIf="employeeForm.get('age')?.hasError('required')">La edad es obligatoria.</mat-error>
+      <mat-error *ngIf="employeeForm.get('age')?.hasError('pattern')">La edad debe ser un número válido.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Salario</mat-label>
+      <input matInput formControlName="salary" type="number" min="0" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field full-width">
+      <mat-label>Fecha de Ingreso</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="initDate" required />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="employeeForm.get('initDate')?.hasError('required')">La fecha de ingreso es
+        obligatoria.</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Fecha de Salida</mat-label>
+      <input matInput [matDatepicker]="picker2" formControlName="endDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field full-width">
+      <mat-label>Departamento</mat-label>
+      <mat-select formControlName="departmentId" required>
+        <mat-option *ngFor="let dept of departments" [value]="dept.id">
+          {{ dept.name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="employeeForm.get('departmentId')?.hasError('required')">
+        El departamento es obligatorio.
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <button mat-raised-button color="primary" type="submit" [disabled]="employeeForm.invalid">
+      Crear Empleado
+    </button>
+  </div>
+
+</form>
