@@ -1,3 +1,5 @@
+import { GlobalStatus } from './global-status.enum';
+
 export interface Employee {
   id: number;
   name: string;
@@ -6,6 +8,6 @@ export interface Employee {
   salary?: number;
   initDate?: string;
   endDate?: string;
-  employeeStatus?: string;
+  status?: GlobalStatus;
   departmentId: number;
 }

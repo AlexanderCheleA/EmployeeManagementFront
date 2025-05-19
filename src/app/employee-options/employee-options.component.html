@@ -1,33 +1,35 @@
-<div>
-  <h2>Opciones de Funcionalidad</h2>
+<div class="funcionalidad-container">
+  <h2 class="title">Opciones de Funcionalidad</h2>
 
-  <div>
-    <button mat-raised-button color="primary" (click)="getHighestSalary()">Salario Más Alto</button>
+  <div class="actions">
+    <mat-card class="action-card">
+      <button mat-raised-button color="primary" (click)="getHighestSalary()">Salario Más Alto</button>
 
-    <div *ngIf="highestSalaryEmployee">
-      <h3>* Empleado con Salario Más Alto *</h3>
-      <p>Nombre: {{ highestSalaryEmployee.name }} {{ highestSalaryEmployee.lastName }}</p>
-      <p>Salario: {{ highestSalaryEmployee.salary | currency:'USD' }}</p>
-      <p>Edad: {{ highestSalaryEmployee.age }}</p>
-      <!-- Puedes mostrar más campos si quieres -->
-    </div>
+      <div *ngIf="highestSalaryEmployee" class="result">
+        <h3>Empleado con Salario Más Alto</h3>
+        <p><strong>Nombre:</strong> {{ highestSalaryEmployee.name }} {{ highestSalaryEmployee.lastName }}</p>
+        <p><strong>Salario:</strong> {{ highestSalaryEmployee.salary | currency:'USD' }}</p>
+        <p><strong>Edad:</strong> {{ highestSalaryEmployee.age }}</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="action-card">
+      <button mat-raised-button color="accent" (click)="getYoungestEmployee()">Edad Más Baja</button>
+
+      <div *ngIf="youngestEmployee" class="result">
+        <h3>Empleado Más Joven</h3>
+        <p><strong>Nombre:</strong> {{ youngestEmployee.name }} {{ youngestEmployee.lastName }}</p>
+        <p><strong>Edad:</strong> {{ youngestEmployee.age }}</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="action-card">
+      <button mat-raised-button color="warn" (click)="countEmployeesLastMonth()">Empleados del Último Mes</button>
+
+      <div *ngIf="employeeCountLastMonth !== undefined && employeeCountLastMonth !== -1" class="result">
+        <h3>Número de Empleados del Último Mes:</h3>
+        <p><strong>{{ employeeCountLastMonth }}</strong></p>
+      </div>
+    </mat-card>
   </div>
-
-
-  <div>
-    <button mat-raised-button color="accent" (click)="getYoungestEmployee()">Edad Más Baja</button>
-    <div *ngIf="youngestEmployee">
-      <h3>* Empleado Más Joven *</h3>
-      <p>Nombre: {{ youngestEmployee.name }} {{ youngestEmployee.lastName }}</p>
-      <p>Edad: {{ youngestEmployee.age }}</p>
-    </div>
-  </div>
-
-  <div>
-    <button mat-raised-button color="warn" (click)="countEmployeesLastMonth()">Empleados del Último Mes</button>
-    <div *ngIf="employeeCountLastMonth !== undefined && employeeCountLastMonth !== -1">
-      <h3>Número de Empleados del Último Mes: {{ employeeCountLastMonth }}</h3>
-    </div>
-  </div>
-
 </div>
