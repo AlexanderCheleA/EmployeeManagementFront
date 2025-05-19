@@ -31,7 +31,7 @@ export class EmployeeFormComponent implements OnInit {
       salary: [''],
       initDate: ['', [Validators.required]],
       endDate: [''],
-      employeeStatus: [''],
+      status: [''],
       departmentId: ['', [Validators.required]],
     });
 
